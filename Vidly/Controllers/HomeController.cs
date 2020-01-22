@@ -20,7 +20,8 @@ namespace Vidly.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var movie = new Movie() { Name = "Murphy" };
+            return View(movie);
         }
 
         public IActionResult Privacy()
