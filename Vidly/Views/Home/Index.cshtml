@@ -3,11 +3,31 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+@{
+    var className = Model.Customers.Count > 0 ? "popular" : null;
+}
 
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-        <h2>@Model.Movie.Name</h2>
-        @* The Following is the bad approach *@
-        @* <h2>@(((Movie)ViewData["Movie"]).Name)</h2> *@
-    </div>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h2 class="@className">@Model.Movie.Name</h2>
+    @* The Following is the bad approach *@
+    @* <h2>@(((Movie)ViewData["Movie"]).Name)</h2> *@
+</div>
+
+
+@if (Model.Customers.Count == 0)
+{
+    <text>No one has rented this movie before.</text>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
+
