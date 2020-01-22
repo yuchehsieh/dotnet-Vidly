@@ -21,7 +21,13 @@ namespace Vidly.Controllers
         public IActionResult Index()
         {
             var movie = new Movie() { Name = "Murphy" };
+
+            // BAD approach!
+            //ViewData["Movie"] = movie;
+            //return View();
+
             return View(movie);
+
         }
 
         public IActionResult Privacy()
