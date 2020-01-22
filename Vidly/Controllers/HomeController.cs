@@ -33,6 +33,22 @@ namespace Vidly.Controllers
             //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
         }
 
+        public ActionResult Edit(int id)
+        {
+            return Content("Id: " + id);
+        }
+
+        public ActionResult Test(int? pageIndex, string sortBy)
+        {
+            if (!pageIndex.HasValue)
+                pageIndex = 1;
+
+            if (String.IsNullOrWhiteSpace(sortBy))
+                sortBy = "Name";
+
+            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
