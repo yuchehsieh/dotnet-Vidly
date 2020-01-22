@@ -55,6 +55,11 @@ namespace Vidly
                     pattern: "{controller=Movies}/{action=ByReleaseDate}/{year?}/{month?}",
                     constraints: new { year = @"\d{4}", month = @"\d{2}" });
                 //constraints: new { year=@"2015|2016", month=@"\d{2}"}); // limit in 2015-2016
+
+                endpoints.MapControllerRoute(
+                    name: "Customer",
+                    pattern: "{controller=Customers}/{action=Index}/{customerName?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
