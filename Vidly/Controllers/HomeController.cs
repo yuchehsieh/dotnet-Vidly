@@ -27,6 +27,10 @@ namespace Vidly.Controllers
         public IActionResult Privacy()
         {
             return View();
+            //return NotFound();
+            //return Content("Hello world");
+            //return new EmptyResult();
+            //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
