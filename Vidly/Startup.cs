@@ -46,8 +46,13 @@ namespace Vidly
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints =>   
             {
+                endpoints.MapControllerRoute(
+                    name: "MoviesByReleaseDate",
+                    pattern: "{controller=Movies}/{action=ByReleaseDate}/{year?}/{month?}",
+                    constraints: new { year=@"\d{4}", month=@"\d{2}"});
+                    //constraints: new { year=@"2015|2016", month=@"\d{2}"}); // limit in 2015-2016
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
