@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Vidly.Models;
+using Vidly.ViewModel;
 
 namespace Vidly.Controllers
 {
@@ -21,12 +22,23 @@ namespace Vidly.Controllers
         public IActionResult Index()
         {
             var movie = new Movie() { Name = "Murphy" };
+            var customers = new List<Customer>()
+            {
+                new Customer() { Name = "Customer1" },
+                new Customer() { Name = "Customer2" }
+            };
 
+            var viewModel = new RandomMovieViewModel()
+            {
+                Movie = movie,
+                Customers = customers
+            };
+        
             // BAD approach!
             //ViewData["Movie"] = movie;
             //return View();
 
-            return View(movie);
+            return View(viewModel);
 
         }
 
